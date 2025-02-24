@@ -56,6 +56,8 @@ All the information about Office Add-ins is found in our [official documentation
 
 If you edit the manifest as part of your changes, use the **Validate Manifest File** option in the Office Add-ins Development Kit. This shows you errors in the manifest syntax.
 
+Target project is [excel-add-in-shape-dashboard](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-add-in-shape-dashboard).
+
 ## Engage with the team
 
 Did you experience any problems? [Create an issue](https://aka.ms/officedevkitnewissue) and we'll help you out.
