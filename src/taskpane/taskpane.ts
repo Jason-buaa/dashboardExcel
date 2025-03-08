@@ -23,6 +23,12 @@ export async function run() {
       rectangle.height = 150;
       rectangle.width = 150;
       rectangle.name = "Square";
+      let textbox = shapes.addTextBox("Hello!");
+      textbox.left = 200;
+      textbox.top = 100;
+      textbox.height = 20;
+      textbox.width = 45;
+      textbox.name = "Textbox";
       await context.sync();
     });
   } catch (error) {
