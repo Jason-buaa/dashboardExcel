@@ -16,19 +16,14 @@ Office.onReady((info) => {
 export async function run() {
   try {
     await Excel.run(async (context) => {
-      /**
-       * Insert your Excel code here
-       */
-      const range = context.workbook.getSelectedRange();
-
-      // Read the range address
-      range.load("address");
-
-      // Update the fill color
-      range.format.fill.color = "yellow";
-
+      let shapes = context.workbook.worksheets.getItem("Sheet1").shapes;
+      let rectangle = shapes.addGeometricShape(Excel.GeometricShapeType.rectangle);
+      rectangle.left = 100;
+      rectangle.top = 100;
+      rectangle.height = 150;
+      rectangle.width = 150;
+      rectangle.name = "Square";
       await context.sync();
-      console.log(`The range address was ${range.address}.`);
     });
   } catch (error) {
     console.error(error);
