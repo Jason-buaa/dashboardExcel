@@ -13,6 +13,7 @@ Office.onReady((info) => {
     document.getElementById("gruop").onclick = group_shape;
     document.getElementById("move").onclick = group_move;
     document.getElementById("turtle").onclick = drawTurtle;
+    document.getElementById("star").onclick = spinStar;
   }
 });
 
@@ -141,6 +142,38 @@ export async function drawTurtle() {
       tail.name = "Tail";
 
       await context.sync();
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function spinStar() {
+  try {
+    await Excel.run(async (context) => {
+      let shapes = context.workbook.worksheets.getItem("Sheet1").shapes;
+
+      // Add a 5-pointed star
+      const star = shapes.addGeometricShape(Excel.GeometricShapeType.star5);
+      star.name = "SpinningStar";
+      star.left = 100;
+      star.top = 100;
+      star.width = 100;
+      star.height = 100;
+      star.fill.setSolidColor("Gold");
+
+      await context.sync();
+
+      // Function to animate rotation
+      let angle = 0;
+      const rotateStar = async () => {
+        angle = (angle + 10) % 360; // Increment angle
+        star.rotation = angle;
+        await context.sync();
+        setTimeout(rotateStar, 100); // Repeat every 100ms
+      };
+
+      rotateStar(); // Start animation
     });
   } catch (error) {
     console.error(error);
